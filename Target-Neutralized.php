@@ -5,4 +5,5 @@ $scenario = new TheSpy();
 foreach($scenario->getRooms() as $room)
 {
     echo $room["name"]."\n";
+    echo $room["desc"]."\n\n";
 }
