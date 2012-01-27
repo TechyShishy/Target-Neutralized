@@ -20,6 +20,7 @@ class TheSpy extends Scenario
     public function __construct()
     {
         $this->doLoad();
+        $this->currentRoom = $this->rooms[0];
     }
     public function getRooms()
     {

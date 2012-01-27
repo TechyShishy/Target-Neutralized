@@ -2,6 +2,8 @@
 
 class Engine
 {
+    protected $scenario;
+    
     public function __construct($scenarioName)
     {
         $this->scenario = new $scenarioName();
@@ -11,9 +13,9 @@ class Engine
     {
         while(true)
         {
-            $room = $scenario->getRoom();
-            echo $room->getDesc();
-            $command = readline('~:');
+            $room = $this->scenario->getRoom();
+            echo $room->getDesc()."\n\n";
+            $command = readline('~: ');
             readline_add_history($command);
             $this->handleCommand($command);
         }
