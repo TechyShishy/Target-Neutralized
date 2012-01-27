@@ -28,6 +28,10 @@ class Room
     {
         return $this->exits;
     }
+    public function getExit($exit)
+    {
+        return $this->exits[$exit];
+    }
     
     public function doHookupExits($roomsList)
     {

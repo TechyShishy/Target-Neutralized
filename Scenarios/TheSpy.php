@@ -30,6 +30,10 @@ class TheSpy extends Scenario
     {
         return $this->currentRoom;
     }
+    public function move($dir)
+    {
+        $this->currentRoom= $this->currentRoom->getExit($dir);
+    }
     protected function doLoad()
     {
         foreach($this->roomsArray as $id => $room)
