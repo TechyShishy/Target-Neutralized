@@ -2,7 +2,8 @@
 
 class TheSpy extends Scenario
 {
-    private $rooms = array(
+    protected $currentRoom;
+    private $roomsArray = array(
        0 => array( 
            "name" => "Home", 
            "desc" => "This is your home",
@@ -14,8 +15,29 @@ class TheSpy extends Scenario
             "exits" => array( "west" => 0)
             )
         );
-        public function getRooms()
+    protected $rooms = array();
+    
+    public function __construct()
+    {
+        $this->doLoad();
+    }
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
+    public function getRoom()
+    {
+        return $this->currentRoom;
+    }
+    protected function doLoad()
+    {
+        foreach($this->roomsArray as $id => $room)
         {
-            return $this->rooms;
+            $this->rooms[$id] = new Room($room);
         }
+        foreach($this->rooms as $room)
+        {
+            $room->doHookupExits($this->rooms);
+        }
+    }
 }
