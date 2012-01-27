@@ -4,9 +4,5 @@ require_once("lib/Room.php");
 require_once("lib/Engine.php");
 require_once("Scenarios/TheSpy.php");
 
-$scenario = new TheSpy();
-foreach($scenario->getRooms() as $room)
-{
-    echo $room["name"]."\n";
-    echo $room["desc"]."\n\n";
-}
+$engine = new Engine('TheSpy');
+$engine->gameLoop();
